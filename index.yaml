@@ -1,0 +1,42 @@
+apiVersion: v1
+entries:
+  gzip:
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:gzip
+          name: gzip
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/charts/issues
+      catalog.cattle.io/display-name: Gzip
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: gzip
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
+    created: "2022-12-14T23:06:53.362920411Z"
+    description: Gzip (GNU zip) is a compression utility designed to be a replacement
+      for "compress". Its main advantages over compress are much better compression
+      and freedom from patented algorithms.  The GNU Project uses it as the standard
+      compression program for its system.
+    digest: cc0e9d51056177187b437bdec7b3a0b60f6509a7d68afdbdbbf84131243c6b44
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: gzip
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/gzip-1.0.0/gzip-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-12-14T23:06:53.362929111Z"
