@@ -1,0 +1,14 @@
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+rules:
+- apiGroups: ["serving.knative.dev"]
+  resources: ["services"]
+  verbs: ["get"]
+- apiGroups: ["ui.cattle.io"]
+  resources: ["navlinks"]
+  verbs: ["get", "patch"]

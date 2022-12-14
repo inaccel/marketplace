@@ -1,0 +1,23 @@
+{{- if .Capabilities.APIVersions.Has "ui.cattle.io/v1" }}
+---
+apiVersion: ui.cattle.io/v1
+kind: NavLink
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+spec:
+  description: {{ $.Chart.Description }}
+  group: {{ $.Chart.Annotations.category }}
+  iconSrc: {{ $.Chart.Icon }}
+  label: {{ title $.Chart.Name }}
+  {{- if or ( not ( .Capabilities.APIVersions.Has "serving.knative.dev/v1" ) ) ( not $.Values.autoscaling.enabled ) }}
+  toService:
+    name: {{ $.Chart.Name }}
+    namespace: {{ $.Release.Namespace }}
+    path: gradio
+    port: "80"
+  {{- else }}
+  sideLabel: Autoscaling
+  {{- end }}
+{{- end }}

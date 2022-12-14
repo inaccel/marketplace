@@ -1,0 +1,42 @@
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  selector:
+    matchLabels:
+      kind: DaemonSet
+      {{- include "selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: inaccel-cli-0
+      labels:
+        kind: DaemonSet
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - image: gcr.io/google_containers/pause
+        name: pause
+      initContainers:
+      - args:
+        - bitstream
+        - install
+        - https://store.inaccel.com/artifactory/bitstreams/{{ include "platformVendor" $ }}/{{ include "platformName" $ }}/{{ include "platformVersion" $ }}/{{ index $.Values.bitstreams ( print ( include "platformVendor" $ )  "/" ( include "platformName" $ ) "/" ( include "platformVersion" $ ) ) }}
+        image: inaccel/cli
+        name: inaccel-cli-0
+        volumeMounts:
+        - mountPath: /var/lib/inaccel/tmp
+          name: public
+          subPath: tmp
+      nodeSelector:
+        {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ include "platformVersion" $ }}
+      volumes:
+      - hostPath:
+          path: /var/lib/inaccel/.public/_resources
+          type: DirectoryOrCreate
+        name: public

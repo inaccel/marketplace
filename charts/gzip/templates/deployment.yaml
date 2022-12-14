@@ -1,0 +1,47 @@
+{{- if or ( not ( .Capabilities.APIVersions.Has "serving.knative.dev/v1" ) ) ( not $.Values.autoscaling.enabled ) }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  {{- if $.Values.replicas }}
+  replicas: {{ $.Values.replicas }}
+  {{- end }}
+  selector:
+    matchLabels:
+      kind: Deployment
+      {{- include "selectorLabels" $ | nindent 6 }}
+  template:
+    metadata:
+      annotations:
+        kubectl.kubernetes.io/default-container: {{ $.Chart.Name }}
+      labels:
+        inaccel/fpga: enabled
+        kind: Deployment
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        {{- range $name, $value := $.Values.env }}
+        - name: {{ $name }}
+          value: {{ $value | quote }}
+        {{- end }}
+        image: {{ $.Values.image }}:{{ $.Values.tag }}
+        {{- if $.Values.pullPolicy }}
+        imagePullPolicy: {{ $.Values.pullPolicy }}
+        {{- end }}
+        name: {{ $.Chart.Name }}
+        resources:
+          limits:
+            {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ $.Values.fpga }}
+      {{- if $.Values.pullSecret }}
+      imagePullSecrets:
+      - name: {{ $.Values.pullSecret }}
+      {{- end }}
+      nodeSelector:
+        {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ include "platformVersion" $ }}
+{{- end }}
