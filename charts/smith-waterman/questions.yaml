@@ -1,0 +1,90 @@
+questions:
+- default: 'true'
+  description: Indicates whether Autoscaling should be enabled
+  group: Autoscaling
+  label: enabled
+  required: true
+  show_subquestion_if: 'true'
+  subquestions:
+  - default: concurrency
+    description: What metric the PodAutoscaler should be scaled on
+    group: Autoscaling
+    label: Metric
+    options:
+    - concurrency
+    - rps
+    type: enum
+    variable: autoscaling.metric
+  - description: What metric value the PodAutoscaler should attempt to maintain
+    group: Autoscaling
+    label: Target
+    type: int
+    variable: autoscaling.target
+  - default: 0
+    description: The minimum number of Pods the PodAutoscaler should provision
+    group: Autoscaling
+    label: Min Scale
+    type: int
+    variable: autoscaling.minScale
+  - default: 0
+    description: The maximum number of Pods the PodAutoscaler should provision
+    group: Autoscaling
+    label: Max Scale
+    type: int
+    variable: autoscaling.maxScale
+  - default: 1
+    description: The initial scale of a Revision when a Service is initially deployed
+    group: Autoscaling
+    label: Initial Scale
+    type: int
+    variable: autoscaling.initialScale
+  - default: 0s
+    description: The time window which must pass before a scale-down decision is applied
+    group: Autoscaling
+    label: Scale Down Delay
+    type: string
+    variable: autoscaling.scaleDownDelay
+  - default: 0s
+    description: The minimum time duration the last Pod will not be scaled down, after autoscaler has made the decision to scale to 0
+    group: Autoscaling
+    label: Scale To Zero Pod Retention Period
+    type: string
+    variable: autoscaling.scaleToZeroPodRetentionPeriod
+  type: boolean
+  variable: autoscaling.enabled
+- default: inaccel/marketplace
+  group: Container
+  label: Image
+  type: string
+  variable: image
+- default: smith-waterman
+  group: Container
+  label: Tag
+  type: string
+  variable: tag
+- default: Always
+  group: Container
+  label: Pull Policy
+  options:
+  - Always
+  - IfNotPresent
+  - Never
+  type: enum
+  variable: pullPolicy
+- group: Container
+  label: Pull Secret
+  type: secret
+  variable: pullSecret
+- default: 1
+  group: Environment
+  label: Web Concurrency
+  type: int
+  variable: env.WEB_CONCURRENCY
+- group: Platform
+  label: ' '
+  options:
+  - Intel PAC A10 (38d782e3b6125343b9342433e348ac4c)
+  - Intel PAC S10 (9346116da52d5ca8b06aa9a389ef7c8d)
+  required: true
+  type: enum
+  variable: platform

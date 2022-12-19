@@ -1,0 +1,60 @@
+{{- if or ( not ( .Capabilities.APIVersions.Has "serving.knative.dev/v1" ) ) ( not $.Values.autoscaling.enabled ) }}
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  ports:
+  - port: 80
+    targetPort: 8080
+  selector:
+    kind: Deployment
+    {{- include "selectorLabels" $ | nindent 4 }}
+{{- else }}
+---
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/initial-scale: {{ $.Values.autoscaling.initialScale | quote }}
+        autoscaling.knative.dev/max-scale: {{ $.Values.autoscaling.maxScale | quote }}
+        autoscaling.knative.dev/metric: {{ $.Values.autoscaling.metric }}
+        autoscaling.knative.dev/min-scale: {{ $.Values.autoscaling.minScale | quote }}
+        autoscaling.knative.dev/scale-down-delay: {{ $.Values.autoscaling.scaleDownDelay }}
+        autoscaling.knative.dev/scale-to-zero-pod-retention-period: {{ $.Values.autoscaling.scaleToZeroPodRetentionPeriod }}
+        autoscaling.knative.dev/target: {{ $.Values.autoscaling.target | quote }}
+      labels:
+        inaccel/fpga: enabled
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - env:
+        {{- range $name, $value := $.Values.env }}
+        - name: {{ $name }}
+          value: {{ $value | quote }}
+        {{- end }}
+        image: {{ $.Values.image }}:{{ $.Values.tag }}
+        {{- if $.Values.pullPolicy }}
+        imagePullPolicy: {{ $.Values.pullPolicy }}
+        {{- end }}
+        resources:
+          limits:
+            {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ $.Values.fpga }}
+      {{- if $.Values.pullSecret }}
+      imagePullSecrets:
+      - name: {{ $.Values.pullSecret }}
+      {{- end }}
+      nodeSelector:
+        {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ include "platformVersion" $ }}
+{{- end }}

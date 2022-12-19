@@ -1,0 +1,3 @@
+target,query,gap_open,gap_extend
+AF133821.1.fasta,AY352275.1.fasta,4,3
+NC_000898.1.fasta,NC_007605.1.fasta,6,1

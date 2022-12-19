@@ -1,0 +1,30 @@
+{{- if and ( .Capabilities.APIVersions.Has "serving.knative.dev/v1" ) $.Values.autoscaling.enabled }}
+---
+apiVersion: batch/v1
+kind: Job
+metadata:
+  annotations:
+    helm.sh/hook: post-install,post-upgrade
+    helm.sh/hook-delete-policy: before-hook-creation,hook-succeeded
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Chart.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  template:
+    metadata:
+      labels:
+        kind: Job
+        {{- include "labels" $ | nindent 8 }}
+    spec:
+      containers:
+      - args:
+        - 'kubectl patch --namespace={{ $.Release.Namespace }} --patch="{\"spec\":{\"toURL\":\"$(kubectl get --namespace={{ $.Release.Namespace }} --output=jsonpath={.status.url} service.serving.knative.dev/{{ $.Chart.Name }})/gradio\"}}" --type=merge navlink.ui.cattle.io/{{ $.Chart.Name }}'
+        command:
+        - sh
+        - -c
+        image: bitnami/kubectl
+        name: {{ $.Chart.Name }}
+      restartPolicy: Never
+      serviceAccountName: {{ $.Chart.Name }}
+{{- end }}
