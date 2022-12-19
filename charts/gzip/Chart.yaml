@@ -14,7 +14,7 @@ annotations:
   catalog.cattle.io/scope: downstream
   category: Serverless
 apiVersion: v2
-description: Gzip (GNU zip) is a compression utility designed to be a replacement for "compress". Its main advantages over compress are much better compression and freedom from patented algorithms.  The GNU Project uses it as the standard compression program for its system.
+description: Gzip (GNU zip) is a compression utility designed to be a replacement for "compress". Its main advantages over compress are much better compression and freedom from patented algorithms. The GNU Project uses it as the standard compression program for its system.
 home: https://inaccel.com
 icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
 keywords:
@@ -28,4 +28,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/marketplace
 type: application
-version: 1.0.0
+version: 1.0.1

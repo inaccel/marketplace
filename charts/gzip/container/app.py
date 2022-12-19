@@ -43,7 +43,7 @@ with gradio.Blocks(analytics_enabled=False, title='Gzip') as blocks:
         blocks.title + '</h1>')
     gradio.Markdown(
         value=
-        'Gzip (**GNU zip**) is a *compression utility* designed to be a replacement for "compress". Its main advantages over compress are much **better compression and freedom** from patented algorithms.  The GNU Project uses it as the standard compression program for its system.'
+        'Gzip (**GNU zip**) is a *compression utility* designed to be a replacement for "compress". Its main advantages over compress are much **better compression and freedom** from patented algorithms. The GNU Project uses it as the standard compression program for its system.'
     )
     with gradio.Row():
         with gradio.Column():

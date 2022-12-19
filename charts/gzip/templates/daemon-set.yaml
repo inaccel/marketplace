@@ -26,7 +26,7 @@ spec:
       - args:
         - bitstream
         - install
-        - https://store.inaccel.com/artifactory/bitstreams/{{ include "platformVendor" $ }}/{{ include "platformName" $ }}/{{ include "platformVersion" $ }}/{{ index $.Values.bitstreams ( print ( include "platformVendor" $ )  "/" ( include "platformName" $ ) "/" ( include "platformVersion" $ ) ) }}
+        - https://store.inaccel.com/artifactory/bitstreams/{{ include "platformVendor" $ }}/{{ include "platformName" $ }}/{{ include "platformVersion" $ }}/{{ index $.Values.bitstreams ( print ( include "platformVendor" $ ) "/" ( include "platformName" $ ) "/" ( include "platformVersion" $ ) ) }}
         image: inaccel/cli
         name: inaccel-cli-0
         volumeMounts:
