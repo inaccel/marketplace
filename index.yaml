@@ -39,4 +39,44 @@ entries:
     urls:
     - https://github.com/inaccel/marketplace/releases/download/gzip-1.0.0/gzip-1.0.0.tgz
     version: 1.0.0
-generated: "2022-12-14T23:06:53.362929111Z"
+  smith-waterman:
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:smith-waterman
+          name: smith-waterman
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/charts/issues
+      catalog.cattle.io/display-name: Smith-Waterman
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: smith-waterman
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
+    created: "2022-12-19T10:00:47.82006579Z"
+    description: The Smith-Waterman algorithm performs local sequence alignment; that
+      is, for determining similar regions between two strings (Target, Query) of nucleic
+      acid sequences or protein sequences. Instead of looking at the entire sequence,
+      the Smith-Waterman algorithm compares segments of all possible lengths and optimizes
+      the similarity measure.
+    digest: 950c380667aa71fe5f2a996ed3a7f417d0a5441c4e11a1bd4c81521ea89fbd26
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: smith-waterman
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.0.0/smith-waterman-1.0.0.tgz
+    version: 1.0.0
+generated: "2022-12-19T10:00:47.82007539Z"
