@@ -50,6 +50,12 @@ spec:
         {{- end }}
         resources:
           limits:
+            {{- if $.Values.cpu }}
+            cpu: {{ $.Values.cpu }}
+            {{- end }}
+            {{- if $.Values.memory }}
+            memory: {{ $.Values.memory }}
+            {{- end }}
             {{ include "platformVendor" $ }}/{{ include "platformName" $ }}: {{ $.Values.fpga }}
       {{- if $.Values.pullSecret }}
       imagePullSecrets:
