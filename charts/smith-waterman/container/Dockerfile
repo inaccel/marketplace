@@ -4,10 +4,10 @@ RUN curl -sS https://setup.inaccel.com/repository | sh \
  && apt install --yes coral-api \
  && rm --force --recursive /var/lib/apt/lists/*
 
- RUN git clone --depth 1 --recurse-submodules https://github.com/inaccel/klib /tmp/klib \
-  && cd /tmp/klib \
-  && gcc -D_KSW_MAIN ksw.c -lcoral-api -lz -o /bin/ksw \
-  && rm --force --recursive /tmp/klib
+RUN git clone --depth 1 --recurse-submodules https://github.com/inaccel/klib /tmp/klib \
+ && cd /tmp/klib \
+ && gcc -D_KSW_MAIN ksw.c -lcoral-api -lz -o /bin/ksw \
+ && rm --force --recursive /tmp/klib
 
 FROM python:3.10-slim
 
