@@ -1,6 +1,5 @@
 questions:
-- default: 'true'
-  description: Indicates whether Autoscaling should be enabled
+- description: Indicates whether Autoscaling should be enabled
   group: Autoscaling
   label: enabled
   required: true
@@ -52,18 +51,15 @@ questions:
     variable: autoscaling.scaleToZeroPodRetentionPeriod
   type: boolean
   variable: autoscaling.enabled
-- default: inaccel/marketplace
-  group: Container
+- group: Container
   label: Image
   type: string
   variable: image
-- default: gzip
-  group: Container
+- group: Container
   label: Tag
   type: string
   variable: tag
-- default: Always
-  group: Container
+- group: Container
   label: Pull Policy
   options:
   - Always
@@ -75,8 +71,7 @@ questions:
   label: Pull Secret
   type: secret
   variable: pullSecret
-- default: 1
-  group: Environment
+- group: Environment
   label: Web Concurrency
   type: int
   variable: env.WEB_CONCURRENCY
