@@ -11,6 +11,47 @@ entries:
           url: https://docs.inaccel.com
         - name: Support
           url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: Gzip
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: gzip
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
+    created: "2023-03-27T23:59:05.650111146Z"
+    description: Gzip (GNU zip) is a compression utility designed to be a replacement
+      for "compress". Its main advantages over compress are much better compression
+      and freedom from patented algorithms. The GNU Project uses it as the standard
+      compression program for its system.
+    digest: 1b0821855e6c0af7c677b8e82f87722d80181caedfa9e369843ee69f81bcea83
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: gzip
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/gzip-1.1.3/gzip-1.1.3.tgz
+    version: 1.1.3
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:gzip
+          name: gzip
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
       catalog.cattle.io/display-name: Gzip
       catalog.cattle.io/os: linux
       catalog.cattle.io/release-name: gzip
@@ -202,6 +243,43 @@ entries:
           url: https://docs.inaccel.com
         - name: Support
           url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: HEflow Service
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
+    created: "2023-03-27T23:59:05.810371076Z"
+    description: A Privacy-Preserving Machine Learning Service
+    digest: 6cbb5af347a6693c9f53ede37a934c264ae7aba32e183b86cf14406e5c5f4e0c
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - homomorphic-encryption
+    - privacy-preserving-machine-learning
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: heflow-service
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/heflow-service-1.0.1/heflow-service-1.0.1.tgz
+    version: 1.0.1
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/heflow:latest
+          name: heflow
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
       catalog.cattle.io/display-name: HEflow Service
       catalog.cattle.io/os: linux
       catalog.cattle.io/scope: downstream
@@ -227,6 +305,48 @@ entries:
     - https://github.com/inaccel/marketplace/releases/download/heflow-service-1.0.0/heflow-service-1.0.0.tgz
     version: 1.0.0
   smith-waterman:
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:smith-waterman
+          name: smith-waterman
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: Smith-Waterman
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: smith-waterman
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
+    created: "2023-03-27T23:59:06.03535388Z"
+    description: The Smith-Waterman algorithm performs local sequence alignment; that
+      is, for determining similar regions between two strings (Target, Query) of nucleic
+      acid sequences or protein sequences. Instead of looking at the entire sequence,
+      the Smith-Waterman algorithm compares segments of all possible lengths and optimizes
+      the similarity measure.
+    digest: 9361c044fba7aa808d674831c9cce3ea577afd1da2eba851e57cfb12c9c88d82
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: smith-waterman
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.1.3/smith-waterman-1.1.3.tgz
+    version: 1.1.3
   - annotations:
       artifacthub.io/images: |
         - image: inaccel/marketplace:smith-waterman
@@ -383,4 +503,4 @@ entries:
     urls:
     - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.0.0/smith-waterman-1.0.0.tgz
     version: 1.0.0
-generated: "2023-03-27T23:44:03.749808161Z"
+generated: "2023-03-27T23:59:06.03538848Z"
