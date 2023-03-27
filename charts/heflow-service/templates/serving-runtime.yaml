@@ -1,0 +1,48 @@
+---
+apiVersion: serving.kserve.io/v1alpha1
+kind: ServingRuntime
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Release.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  annotations:
+    kubectl.kubernetes.io/default-container: kserve-container
+    prometheus.kserve.io/port: "8082"
+  containers:
+  - command:
+    - mlflow
+    - models
+    - serve
+    - --enable-mlserver
+    - --model-uri=/mnt/models
+    - --port=8081
+    env:
+    - name: MLFLOW_ENV_ROOT
+      value: /mnt/python/envs
+    - name: MLSERVER_GRPC_MAX_MESSAGE_LENGTH
+      value: "-1"
+    - name: MLSERVER_GRPC_PORT
+      value: "8080"
+    - name: PYENV_ROOT
+      value: /mnt/python
+    image: {{ $.Values.image }}:{{ $.Values.tag }}
+    {{- if $.Values.pullPolicy }}
+    imagePullPolicy: {{ $.Values.pullPolicy }}
+    {{- end }}
+    name: kserve-container
+    ports:
+    - containerPort: 8080
+      name: h2c
+    volumeMounts:
+    - mountPath: /mnt/python
+      name: kserve-python-env
+  protocolVersions:
+  - grpc-v2
+  supportedModelFormats:
+  - autoSelect: true
+    name: {{ $.Release.Name }}
+  volumes:
+  - emptyDir: {}
+    name: kserve-python-env

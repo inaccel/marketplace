@@ -1,0 +1,53 @@
+---
+apiVersion: serving.kserve.io/v1beta1
+kind: InferenceService
+metadata:
+  labels:
+    {{- include "labels" $ | nindent 4 }}
+  name: {{ $.Release.Name }}
+  namespace: {{ $.Release.Namespace }}
+spec:
+  predictor:
+    initContainers:
+    - command:
+      - mlflow
+      - artifacts
+      - download
+      - --artifact-uri={{ $.Values.key }}
+      - --dst-path=/mnt/keys
+      envFrom:
+      - secretRef:
+          name: {{ $.Release.Name }}
+      image: {{ $.Values.image }}:{{ $.Values.tag }}
+      {{- if $.Values.pullPolicy }}
+      imagePullPolicy: {{ $.Values.pullPolicy }}
+      {{- end }}
+      name: heflow-storage-initializer
+      volumeMounts:
+      - mountPath: /mnt/keys/{{ base $.Values.key }}
+        name: heflow-provision-location
+    model:
+      env:
+      - name: HEFLOW_CKKS
+        value: /mnt/keys/id_ckks.pub
+      modelFormat:
+        name: {{ $.Release.Name }}
+      {{- if or $.Values.cpu $.Values.memory }}
+      resources:
+        limits:
+          {{- if $.Values.cpu }}
+          cpu: {{ $.Values.cpu }}
+          {{- end }}
+          {{- if $.Values.memory }}
+          memory: {{ $.Values.memory }}
+          {{- end }}
+      {{- end }}
+      storageUri: {{ $.Values.model }}
+      volumeMounts:
+      - mountPath: /mnt/keys
+        name: heflow-provision-location
+        readOnly: true
+    serviceAccountName: {{ $.Release.Name }}
+    volumes:
+    - emptyDir: {}
+      name: heflow-provision-location

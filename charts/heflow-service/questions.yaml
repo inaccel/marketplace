@@ -1,0 +1,64 @@
+questions:
+- group: Container
+  label: Image
+  type: string
+  variable: image
+- group: Container
+  label: Tag
+  type: string
+  variable: tag
+- group: Container
+  label: Pull Policy
+  options:
+  - Always
+  - IfNotPresent
+  - Never
+  type: enum
+  variable: pullPolicy
+- group: Databricks Credentials
+  label: Host
+  variable: credentials.databricks.host
+- group: Databricks Credentials
+  label: Insecure
+  variable: credentials.databricks.insecure
+- group: Databricks Credentials
+  label: Username
+  variable: credentials.databricks.username
+- group: Databricks Credentials
+  label: Password
+  variable: credentials.databricks.password
+- group: Databricks Credentials
+  label: Token
+  variable: credentials.databricks.token
+- group: MLflow Credentials
+  label: Tracking URI
+  variable: credentials.mlflow.trackingUri
+- group: MLflow Credentials
+  label: Tracking Insecure TLS
+  variable: credentials.mlflow.trackingInsecureTls
+- group: MLflow Credentials
+  label: Tracking Username
+  variable: credentials.mlflow.trackingUsername
+- group: MLflow Credentials
+  label: Tracking Password
+  variable: credentials.mlflow.trackingPassword
+- group: MLflow Credentials
+  label: Tracking Token
+  variable: credentials.mlflow.trackingToken
+- group: S3 Credentials
+  label: Access Key ID
+  variable: credentials.s3.accessKeyId
+- group: S3 Credentials
+  label: Region
+  variable: credentials.s3.region
+- group: S3 Credentials
+  label: Secret Access Key
+  variable: credentials.s3.secretAccessKey
+- group: Key
+  label: ' '
+  required: true
+  variable: key
+- group: Model
+  label: ' '
+  required: true
+  variable: model
