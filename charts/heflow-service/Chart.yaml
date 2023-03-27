@@ -8,12 +8,15 @@ annotations:
       url: https://docs.inaccel.com
     - name: Support
       url: https://github.com/inaccel/marketplace/issues
+  artifacthub.io/signKey: |
+    fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+    url: https://keybase.io/inaccel/pgp_keys.asc
   catalog.cattle.io/display-name: HEflow Service
   catalog.cattle.io/os: linux
   catalog.cattle.io/scope: downstream
   category: Serverless
 apiVersion: v2
-description: A Privacy-Preserving Machine Learning Lifecycle Platform
+description: A Privacy-Preserving Machine Learning Service
 icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
 keywords:
 - homomorphic-encryption
@@ -27,4 +30,4 @@ sources:
 - https://docs.inaccel.com
 - https://github.com/inaccel/marketplace
 type: application
-version: 1.0.0
+version: 1.0.1
