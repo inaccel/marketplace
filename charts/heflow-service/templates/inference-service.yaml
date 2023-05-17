@@ -13,7 +13,7 @@ spec:
       - mlflow
       - artifacts
       - download
-      - --artifact-uri={{ $.Values.key }}
+      - --artifact-uri={{ $.Values.key }}/
       - --dst-path=/mnt/keys
       envFrom:
       - secretRef:
@@ -24,7 +24,7 @@ spec:
       {{- end }}
       name: heflow-storage-initializer
       volumeMounts:
-      - mountPath: /mnt/keys/{{ base $.Values.key }}
+      - mountPath: /mnt/keys
         name: heflow-provision-location
     model:
       env:
