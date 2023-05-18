@@ -47,6 +47,10 @@ spec:
       - mountPath: /mnt/keys
         name: heflow-provision-location
         readOnly: true
+    {{- if $.Values.nodeSelector }}
+    nodeSelector:
+      {{- $.Values.nodeSelector | toYaml | nindent 6 }}
+    {{- end }}
     serviceAccountName: {{ $.Release.Name }}
     volumes:
     - emptyDir: {}
