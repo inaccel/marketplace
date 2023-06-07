@@ -18,6 +18,7 @@ spec:
     - --enable-mlserver
     - --model-uri=/mnt/models
     - --port=8081
+    - --workers=4
     env:
     - name: MLFLOW_ENV_ROOT
       value: /mnt/python/envs
