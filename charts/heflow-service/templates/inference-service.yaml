@@ -2,6 +2,10 @@
 apiVersion: serving.kserve.io/v1beta1
 kind: InferenceService
 metadata:
+  annotations:
+    autoscaling.knative.dev/initial-scale: {{ $.Values.autoscaling.initialScale | quote }}
+    autoscaling.knative.dev/scale-down-delay: {{ $.Values.autoscaling.scaleDownDelay }}
+    autoscaling.knative.dev/scale-to-zero-pod-retention-period: {{ $.Values.autoscaling.scaleToZeroPodRetentionPeriod }}
   labels:
     {{- include "labels" $ | nindent 4 }}
   name: {{ $.Release.Name }}
@@ -26,6 +30,8 @@ spec:
       volumeMounts:
       - mountPath: /mnt/keys
         name: heflow-provision-location
+    maxReplicas: {{ $.Values.autoscaling.maxScale }}
+    minReplicas: {{ $.Values.autoscaling.minScale }}
     model:
       env:
       - name: HEFLOW_CKKS
@@ -51,6 +57,8 @@ spec:
     nodeSelector:
       {{- $.Values.nodeSelector | toYaml | nindent 6 }}
     {{- end }}
+    scaleMetric: {{ $.Values.autoscaling.metric }}
+    scaleTarget: {{ $.Values.autoscaling.target }}
     serviceAccountName: {{ $.Release.Name }}
     volumes:
     - emptyDir: {}
