@@ -251,6 +251,43 @@ entries:
       catalog.cattle.io/scope: downstream
       category: Serverless
     apiVersion: v2
+    created: "2023-06-08T12:36:47.297565869Z"
+    description: A Privacy-Preserving Machine Learning Service
+    digest: f4c8da082b2846f20c7051c04a5bd7f44cea2cbced9ae1e2db81290edc970a7e
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - homomorphic-encryption
+    - privacy-preserving-machine-learning
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: heflow-service
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/heflow-service-1.2.1/heflow-service-1.2.1.tgz
+    version: 1.2.1
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/heflow:latest
+          name: heflow
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: HEflow Service
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
     created: "2023-06-08T10:57:55.351234728Z"
     description: A Privacy-Preserving Machine Learning Service
     digest: c07e7f9fa5a46b9bda96d88b233ab66f46a55f600c8477180333a257a610b038
@@ -651,4 +688,4 @@ entries:
     urls:
     - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.0.0/smith-waterman-1.0.0.tgz
     version: 1.0.0
-generated: "2023-06-08T10:57:55.351287429Z"
+generated: "2023-06-08T12:36:47.297797869Z"
