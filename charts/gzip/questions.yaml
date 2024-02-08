@@ -78,6 +78,8 @@ questions:
 - group: Platform
   label: ' '
   options:
+  - Intel OFS IA-420F/R0 (06dd1e32478657c38c353dc048cdb7e0)
+  - Intel OFS IA-840F/R0 (18f573d96298516d891fc9b6261e3a73)
   - Intel PAC A10 (38d782e3b6125343b9342433e348ac4c)
   - Intel PAC S10 (9346116da52d5ca8b06aa9a389ef7c8d)
   - Intel PAC S10 USM (9346116da52d5ca8b06aa9a389ef7c8d)

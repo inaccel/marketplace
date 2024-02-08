@@ -2,7 +2,8 @@ FROM python:3.10-slim
 
 RUN pip install --no-cache-dir \
         inaccel-gzip-zlib \
-        gradio
+        gradio==3.20.* \
+        pydantic==1.*
 
 WORKDIR /gradio
 COPY app.py .

@@ -4,7 +4,6 @@ import inaccel.coral as inaccel
 import numpy as np
 import os
 import subprocess
-import tempfile
 
 from inaccel.gzip import compress
 
@@ -29,8 +28,7 @@ async def gzip(request: fastapi.Request) -> fastapi.Response:
 
 
 def fn(file):
-    with open(os.path.join(tempfile.mkdtemp(), file.orig_name + '.gz'),
-              'wb') as _compressed_file:
+    with open(file.name + '.gz', 'wb') as _compressed_file:
         with inaccel.allocator:
             _file = np.fromfile(file.name)
         _compressed_file.write(compress(_file.data))

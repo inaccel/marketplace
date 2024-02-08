@@ -8,6 +8,8 @@ autoscaling:
   # scaleToZeroPodRetentionPeriod: ...
   # target: ...
 bitstreams:
+  intel/ofs_ia420fr0/06dd1e32478657c38c353dc048cdb7e0: intel/compression/1.0/2gzip
+  intel/ofs_ia840fr0/18f573d96298516d891fc9b6261e3a73: intel/compression/1.0/2gzip
   intel/pac_a10/38d782e3b6125343b9342433e348ac4c: intel/compression/1.0/1gzip
   intel/pac_s10/9346116da52d5ca8b06aa9a389ef7c8d: intel/compression/1.0/2gzip
   intel/pac_s10_usm/9346116da52d5ca8b06aa9a389ef7c8d: intel/compression/1.0/2gzip
