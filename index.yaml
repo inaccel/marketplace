@@ -20,6 +20,47 @@ entries:
       catalog.cattle.io/scope: downstream
       category: Serverless
     apiVersion: v2
+    created: "2024-02-08T00:24:07.275169367Z"
+    description: Gzip (GNU zip) is a compression utility designed to be a replacement
+      for "compress". Its main advantages over compress are much better compression
+      and freedom from patented algorithms. The GNU Project uses it as the standard
+      compression program for its system.
+    digest: 5e74ffa57ed05090244a279a84a79b805b0c3f33f72769dbdd079686e761bc18
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: gzip
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/gzip-1.1.4/gzip-1.1.4.tgz
+    version: 1.1.4
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:gzip
+          name: gzip
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: Gzip
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: gzip
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
     created: "2023-03-27T23:59:05.650111146Z"
     description: Gzip (GNU zip) is a compression utility designed to be a replacement
       for "compress". Its main advantages over compress are much better compression
@@ -546,6 +587,48 @@ entries:
       catalog.cattle.io/scope: downstream
       category: Serverless
     apiVersion: v2
+    created: "2024-02-08T00:24:07.508588066Z"
+    description: The Smith-Waterman algorithm performs local sequence alignment; that
+      is, for determining similar regions between two strings (Target, Query) of nucleic
+      acid sequences or protein sequences. Instead of looking at the entire sequence,
+      the Smith-Waterman algorithm compares segments of all possible lengths and optimizes
+      the similarity measure.
+    digest: bc9a4fe0f62594cb1808995ffc6f6e2d7ed947dceccb6ada82e4a6c2543874cb
+    home: https://inaccel.com
+    icon: https://gravatar.com/avatar/86a385a9d4ca0ccdfb2ed637cf9f3308
+    keywords:
+    - fpga
+    - serverless
+    maintainers:
+    - email: info@inaccel.com
+      name: InAccel
+    name: smith-waterman
+    sources:
+    - https://docs.inaccel.com
+    - https://github.com/inaccel/marketplace
+    type: application
+    urls:
+    - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.1.4/smith-waterman-1.1.4.tgz
+    version: 1.1.4
+  - annotations:
+      artifacthub.io/images: |
+        - image: inaccel/marketplace:smith-waterman
+          name: smith-waterman
+      artifacthub.io/license: Apache-2.0
+      artifacthub.io/links: |
+        - name: Documentation
+          url: https://docs.inaccel.com
+        - name: Support
+          url: https://github.com/inaccel/marketplace/issues
+      artifacthub.io/signKey: |
+        fingerprint: 468AFD97D42F5E3CD2D58F0B49854F08ECA79B4E
+        url: https://keybase.io/inaccel/pgp_keys.asc
+      catalog.cattle.io/display-name: Smith-Waterman
+      catalog.cattle.io/os: linux
+      catalog.cattle.io/release-name: smith-waterman
+      catalog.cattle.io/scope: downstream
+      category: Serverless
+    apiVersion: v2
     created: "2023-03-27T23:59:06.03535388Z"
     description: The Smith-Waterman algorithm performs local sequence alignment; that
       is, for determining similar regions between two strings (Target, Query) of nucleic
@@ -725,4 +808,4 @@ entries:
     urls:
     - https://github.com/inaccel/marketplace/releases/download/smith-waterman-1.0.0/smith-waterman-1.0.0.tgz
     version: 1.0.0
-generated: "2023-07-07T08:28:07.485356244Z"
+generated: "2024-02-08T00:24:07.508647818Z"
