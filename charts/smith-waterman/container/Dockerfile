@@ -17,7 +17,8 @@ RUN apt update \
  && rm --force --recursive /var/lib/apt/lists/*
 
 RUN pip install --no-cache-dir \
-        gradio
+        gradio==3.20.* \
+        pydantic==1.*
 
 RUN curl -sS https://setup.inaccel.com/repository | sh \
  && apt install --yes coral-api \
