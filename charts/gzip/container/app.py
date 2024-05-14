@@ -30,7 +30,7 @@ async def gzip(request: fastapi.Request) -> fastapi.Response:
 def fn(file):
     with open(file.name + '.gz', 'wb') as _compressed_file:
         with inaccel.allocator:
-            _file = np.fromfile(file.name)
+            _file = np.fromfile(file.name, dtype=np.ubyte)
         _compressed_file.write(compress(_file.data))
     return _compressed_file.name
 
